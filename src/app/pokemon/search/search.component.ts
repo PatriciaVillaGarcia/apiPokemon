@@ -7,18 +7,21 @@ import { PokemonService } from '../services/pokemon.service';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent {
-  @ViewChild('buscador') buscador!: ElementRef<HTMLInputElement>;
+  name: string = '';
+  pokemon_name: string = '';
+  abilities: string[] = [];
+  pokemon_image: string = '';
+  order: string = '';
 
   constructor(private pokemonService: PokemonService) {}
 
-  buscar() {
-    //Utilizo este console.log para saber que tipo de elemento es buscador, en este caso es ElementRef y le pongo un ! para que angular no me de errores.
-    console.log(this.buscador);
+  search() {
+    this.pokemonService.searchPokemon(this.name).subscribe((data: any) => {
+      console.log(data);
 
-    const valor = this.buscador.nativeElement.value;
-    this.pokemonService.searchPokemon(valor);
-
-    //Esta linea consigue que el imput se quede en blanco despues de presionar enter
-    this.buscador.nativeElement.value = '';
+      (this.pokemon_name = data.name),
+        (this.pokemon_image = data.sprite.front_default),
+        (this.order = data.order);
+    });
   }
 }

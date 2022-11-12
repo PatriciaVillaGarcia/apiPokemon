@@ -1,0 +1,30 @@
+.header {
+    height: 15vw;
+    width: 100%; 
+    background-image: url(./img/International_Pokémon_logo.svg.png);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: contain;
+}
+
+hr {
+
+    height: 5px;
+    background-color: black;
+    opacity: none;
+}
+
+.padre {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2))),url('./img/pokemon-list_0_0.jpg_976912859.jpg');
+    min-height: 100vh;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon {
+    margin: 0 5vw;
+}

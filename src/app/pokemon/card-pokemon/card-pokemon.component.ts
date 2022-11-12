@@ -8,6 +8,8 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class CardPokemonComponent implements OnInit {
   public allPokemon: any[] = [];
+  position: any;
+  onePokemon: any;
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
@@ -19,5 +21,22 @@ export class CardPokemonComponent implements OnInit {
       console.log(resp.results);
       this.allPokemon = resp.results;
     });
+  }
+
+  filter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.allPokemon.forEach((pokemon, i) => {
+      if (pokemon.name == filterValue) {
+        this.position = i;
+        this.onePokemon = pokemon;
+      }
+    });
+    console.log(this.onePokemon);
+    console.log(this.position);
+  }
+
+  resetFilter() {
+    this.onePokemon = '';
+    console.log(this.onePokemon);
   }
 }

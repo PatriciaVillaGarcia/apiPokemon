@@ -1,11 +1,6 @@
 <div class="row">
   <div class="col">
-    <p>BUSCAR:</p>
-    <input
-      type="text"
-      placeholder="Buscar pokemon..."
-      (keyup.enter)="buscar()"
-      #buscador
-    />
+    <input type="text" placeholder="Busca tu pokemon..." [(ngModel)]="name" />
+    <button (click)="search()" class="btn btn-primary">Buscar</button>
   </div>
 </div>
