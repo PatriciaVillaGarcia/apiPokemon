@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col detailPokemon">
+    <div class="card">
+      <img
+        src="{{ detailsPokemon.sprites.front_default }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h3 class="card-title">{{ detailsPokemon.name | titlecase }}</h3>
+        <p>
+          Height: <strong> {{ detailsPokemon.height }}</strong>
+        </p>
+        <p>
+          Weight:<strong> {{ detailsPokemon.weight }}</strong>
+        </p>
+        <p *ngFor="let ability of detailsPokemon.abilities">
+          Habilidad:<strong> {{ ability.ability.name | titlecase }} </strong>
+        </p>
+        <button class="btn btn-primary" onclick="history.back()">Volver</button>
+      </div>
+    </div>
+  </div>
+</div>

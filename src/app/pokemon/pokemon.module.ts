@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search/search.component';
 import { CardPokemonComponent } from './card-pokemon/card-pokemon.component';
 import { FormsModule } from '@angular/forms';
-import { InfoComponent } from './info/info.component';
+import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
 
 @NgModule({
-  declarations: [SearchComponent, CardPokemonComponent, InfoComponent],
+  declarations: [SearchComponent, CardPokemonComponent, DetailPokemonComponent],
   imports: [CommonModule, FormsModule],
-  exports: [SearchComponent, CardPokemonComponent, InfoComponent],
+  exports: [SearchComponent, CardPokemonComponent, DetailPokemonComponent],
 })
 export class PokemonModule {}

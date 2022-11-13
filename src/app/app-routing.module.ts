@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { InfoComponent } from './pokemon/info/info.component';
+import { CardPokemonComponent } from './pokemon/card-pokemon/card-pokemon.component';
+import { DetailPokemonComponent } from './pokemon/detail-pokemon/detail-pokemon.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: CardPokemonComponent,
     pathMatch: 'full',
   },
   {
-    path: 'info/:id',
-    component: InfoComponent,
+    path: 'detail/:id',
+    component: DetailPokemonComponent,
   },
   {
     path: '**',

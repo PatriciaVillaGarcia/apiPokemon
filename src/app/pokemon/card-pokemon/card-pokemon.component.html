@@ -1,10 +1,11 @@
 <div class="row">
-  <div class="col search">
+  <div class="col-12 search">
     <input
-      (keyup)="filter($event)"
+      (keyup)="filter()"
       #input
       class="input"
       placeholder="Busca tu pokemon..."
+      autocomplete="on"
     />
     <button (click)="resetFilter()" class="btn btn-primary">
       Resetear filtro
@@ -12,9 +13,10 @@
   </div>
 </div>
 
-<div class="row" *ngIf="onePokemon == null">
+<!-- Bloque para todos los pokemon -->
+<div class="row" *ngIf="!isFilter">
   <div
-    *ngFor="let pokemonn of allPokemon; let i = index"
+    *ngFor="let pokemon of allPokemon; let i = index"
     class="col-12 col-md-3 col-xl-2"
   >
     <div class="card">
@@ -26,34 +28,34 @@
         alt="..."
       />
       <div class="card-body">
-        <h5 class="card-title">{{ pokemonn.name | titlecase }}</h5>
-        <a href="{{ pokemonn.url }}" class="btn btn-primary">¡Te elijo a ti!</a>
-        <!-- <a [routerLink]="['/info', i]" class="btn btn-primary"
+        <h3 class="card-title">{{ pokemon.name | titlecase }}</h3>
+        <a href="/detail/{{ pokemon.name }}" class="btn btn-primary"
           >¡Te elijo a ti!</a
-        > -->
+        >
       </div>
     </div>
   </div>
 </div>
 
-<div class="row" *ngIf="onePokemon">
-  <div class="col-12 col-md-3 col-xl-2">
+<!-- Bloque para filtro pokemon -->
+<div class="row" *ngIf="filterPokemon">
+  <div
+    *ngFor="let pokemon of filterPokemon"
+    class="col onePokemon col-12 col-md-3 col-xl-2"
+  >
     <div class="card">
       <img
         src="https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/{{
-          position + 1
+          pokemon.url.split('pokemon/')[1].split('/')[0]
         }}.png"
         class="card-img-top"
         alt="..."
       />
       <div class="card-body">
-        <h5 class="card-title">{{ onePokemon.name | titlecase }}</h5>
-        <a href="{{ onePokemon.url }}" class="btn btn-primary"
+        <h3 class="card-title">{{ pokemon.name | titlecase }}</h3>
+        <a href="/detail/{{ pokemon.name }}" class="btn btn-primary"
           >¡Te elijo a ti!</a
         >
-        <!-- <a [routerLink]="['/info', i]" class="btn btn-primary"
-          >¡Te elijo a ti!</a
-        > -->
       </div>
     </div>
   </div>
